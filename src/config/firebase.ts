@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyBjiJPFdGA2XnVRGDy0UpVVrYncbwQDZCY",
+    apiKey: "Your_ApiKey",
     authDomain: "carparkingbyiot.firebaseapp.com",
     databaseURL: "https://carparkingbyiot.firebaseio.com",
     projectId: "carparkingbyiot",
