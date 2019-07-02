@@ -1,0 +1,64 @@
+<ion-header style=" font-weight: bolder; font-size: large">
+  <ion-navbar color="bluee">
+    <ion-title>
+      IoT for CARPARKING App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+
+
+  <ion-card padding>
+    <ion-card-header>
+      <ion-card-title color="bluee" style=" font-weight: bolder;">ค้นหาลานจอดรถไกล้เคียง</ion-card-title>
+      <hr>
+    </ion-card-header>
+
+    <button ion-button outline block (click)="goMap()" color="#8b9dc3">
+      <ion-icon name="search"> ค้นหา</ion-icon>
+    </button>
+
+  </ion-card>
+
+
+
+  <ion-card padding>
+
+
+
+    <ion-card-header>
+      <ion-card-title color="bluee" style=" font-weight: bold;">รายชื่อลานจอดรถ</ion-card-title>
+
+    </ion-card-header>
+
+
+    <ion-card-content padding>
+      <ion-list *ngFor="let parkingList  of parkingInfo  | async ; index as i  ">
+        <ion-item lines="full" style=" background: #f6f6f6 ;color: black" (click)="goDetailCal(parkingList)">
+          <span style=" font-weight: bold; color:	#3a5998">{{i+1}}. &nbsp; </span> <span
+            style=" font-weight: bold;">{{parkingList.payload.val().name}}</span>
+          <br>
+
+
+          <div *ngIf="parkingList.payload.val().empSlot!=No">
+            <ion-note style="font-size: 15px" color="dark"> จำนวนช่องจอดที่ว่าง&nbsp;&nbsp;<span
+                style=" font-size: 12px; color:rgb(14, 228, 6)">&nbsp;&nbsp;{{parkingList.payload.val().empSlot}}</span>
+              &nbsp; &nbsp;ช่อง</ion-note>
+          </div>
+
+          <div *ngIf="parkingList.payload.val().empSlot==No">
+            <ion-note style="font-size: 15px" color="dark"> จำนวนช่องจอดที่ว่าง : <span
+                style=" font-size: 12px; color:red">ไม่ได้ติดตั้งอุปกรณ์</span></ion-note>
+          </div>
+          <hr width="100%">
+
+        </ion-item>
+
+
+      </ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
